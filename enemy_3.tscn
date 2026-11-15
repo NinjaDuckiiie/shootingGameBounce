@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bpdvibo8n27dg"]
+
+[ext_resource type="Script" uid="uid://dfowsgxn28qvb" path="res://enemy_3.gd" id="1_hukrr"]
+[ext_resource type="Texture2D" uid="uid://cao6bywy3pw10" path="res://enemysprite3.webp" id="2_dxyk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxyk6"]
+size = Vector2(32, 66)
+
+[node name="enemy3" type="CharacterBody2D" unique_id=159274762 node_paths=PackedStringArray("player")]
+script = ExtResource("1_hukrr")
+player = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=533719570]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1877862960]
+shape = SubResource("RectangleShape2D_dxyk6")
+
+[node name="Area2D" type="Area2D" parent="Area2D" unique_id=181006572]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Area2D" unique_id=1794011830]
+shape = SubResource("RectangleShape2D_dxyk6")
+
+[node name="Enemysprite3" type="Sprite2D" parent="." unique_id=206900887]
+position = Vector2(0, 1)
+texture = ExtResource("2_dxyk6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

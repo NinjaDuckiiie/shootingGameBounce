@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dlgdkqdyl2aqx"]
+
+[ext_resource type="Script" uid="uid://dxihsqrguqg1j" path="res://them_shoter_guy.gd" id="1_efcoj"]
+[ext_resource type="Texture2D" uid="uid://dkmxfffdp5on5" path="res://character2.webp" id="2_im6l8"]
+[ext_resource type="Texture2D" uid="uid://cxvbmi43oct1r" path="res://gun.webp" id="3_3kg1j"]
+[ext_resource type="Texture2D" uid="uid://3iuat25am8fs" path="res://charactersprite3.webp" id="4_74lb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0akp"]
+size = Vector2(44.5, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x15ge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_im6l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_74lb2")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74lb2"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="them shoter guy" type="CharacterBody2D" unique_id=1411499652]
+script = ExtResource("1_efcoj")
+bulletSpeed = 500
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1681737601]
+zoom = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809791350]
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=489512418]
+scale = Vector2(1.3714286, 1.4358975)
+sprite_frames = SubResource("SpriteFrames_x15ge")
+autoplay = "default"
+frame_progress = 0.25586075
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=1773499965]
+position = Vector2(-30, 7)
+scale = Vector2(1.1956522, 1)
+texture = ExtResource("3_3kg1j")
+
+[node name="Timer" type="Timer" parent="." unique_id=527452288]
+wait_time = 2.5
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1932953618]
+offset_left = -32.0
+offset_top = -40.0
+offset_right = 32.0
+offset_bottom = -34.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_74lb2")
+show_percentage = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

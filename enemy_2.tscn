@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://1cp4hnlnhfiv"]
+
+[ext_resource type="Texture2D" uid="uid://bx7l4egq8xagy" path="res://enemysprite8.webp" id="1_hv4bk"]
+[ext_resource type="Script" uid="uid://chuuuvlb4y3e5" path="res://enemy_2.gd" id="1_qr8xe"]
+[ext_resource type="Texture2D" uid="uid://bqmruggsr5t71" path="res://enemysprite9.webp" id="2_qr8xe"]
+[ext_resource type="Texture2D" uid="uid://dvi5av4174s8g" path="res://enemysprite10.webp" id="3_05s6o"]
+[ext_resource type="Texture2D" uid="uid://deoitqultr73h" path="res://enemysprite11.webp" id="4_anlw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_867ty"]
+size = Vector2(48, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l80rf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hv4bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qr8xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_05s6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_anlw3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="enemy2" type="CharacterBody2D" unique_id=176996869 node_paths=PackedStringArray("player")]
+script = ExtResource("1_qr8xe")
+player = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=915937050]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1844126831]
+shape = SubResource("RectangleShape2D_867ty")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753061203]
+position = Vector2(-3.5, 8.077936e-28)
+scale = Vector2(1.0428572, 0.96938777)
+sprite_frames = SubResource("SpriteFrames_l80rf")
+autoplay = "default"
+frame_progress = 0.48442864
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

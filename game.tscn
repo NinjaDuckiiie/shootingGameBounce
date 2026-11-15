@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://chw3ho67ma6se"]
+
+[ext_resource type="PackedScene" uid="uid://dlgdkqdyl2aqx" path="res://them_shoter_guy.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bx82uyy20flv5" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://dy3gelox2fbit" path="res://240_F_371127646_yEdiNHB4HSwng9wJaNu1DzDE0AyMreaf.jpg" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://cni1uwooiskc6" path="res://images (4).jpg" id="3_feb5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+size = Vector2(50, 2292.2656)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0akp"]
+size = Vector2(3120, 63)
+
+[node name="game" type="Node2D" unique_id=580413304 node_paths=PackedStringArray("player")]
+script = ExtResource("1_feb5d")
+player = NodePath("them shoter guy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=992796910]
+position = Vector2(-40, 8)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=203463472]
+position = Vector2(16, -181.86719)
+shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1623643183]
+position = Vector2(3112, -192.26563)
+shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=935086090]
+position = Vector2(1572, 928.5)
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=729302288]
+position = Vector2(1576, -1312)
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="Images(4)" type="Sprite2D" parent="StaticBody2D" unique_id=201376069]
+position = Vector2(-584.00006, -120)
+scale = Vector2(2.5087378, 6.412371)
+texture = ExtResource("3_feb5d")
+
+[node name="Images(4)4" type="Sprite2D" parent="StaticBody2D" unique_id=1503011673]
+position = Vector2(728, -1696)
+scale = Vector2(7.742896, 2.0438144)
+texture = ExtResource("3_feb5d")
+
+[node name="Images(4)3" type="Sprite2D" parent="StaticBody2D" unique_id=1381990536]
+position = Vector2(3464.0002, -95.99999)
+scale = Vector2(3.4396667, 10.412371)
+texture = ExtResource("3_feb5d")
+
+[node name="Images(4)2" type="Sprite2D" parent="StaticBody2D" unique_id=1691000268]
+position = Vector2(682.8102, 1393.5001)
+scale = Vector2(7.4050884, 2.548969)
+texture = ExtResource("3_feb5d")
+
+[node name="240F371127646YEdiNhb4hSwng9wJaNu1DzDe0AyMreaf" type="Sprite2D" parent="StaticBody2D" unique_id=110957237]
+position = Vector2(1556, -207.99994)
+scale = Vector2(8.555556, 9.266666)
+texture = ExtResource("3_fc0e3")
+
+[node name="Timer" type="Timer" parent="." unique_id=2130157209]
+autostart = true
+
+[node name="Timer2" type="Timer" parent="." unique_id=287438003]
+wait_time = 5.0
+autostart = true
+
+[node name="them shoter guy" parent="." unique_id=1411499652 instance=ExtResource("1_80nbo")]
+position = Vector2(1504, -96)
+
+[node name="Timer3" type="Timer" parent="." unique_id=1783825191]
+wait_time = 25.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
